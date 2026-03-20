@@ -1,0 +1,138 @@
+# ⚡ QUICKSTART - Hoop Board
+
+## 🚀 En 5 minutes sur GitHub + Vercel
+
+### 1️⃣ Extraire et tester en local
+
+```bash
+# Extraire
+tar -xzf hoopboard-github-ready.tar.gz
+cd basketball-saas
+
+# Installer
+npm install
+
+# Tester que ça compile
+npm run build
+# ✅ Doit afficher "Compiled successfully"
+
+# Lancer en dev (optionnel)
+npm run dev
+# → http://localhost:3000
+```
+
+### 2️⃣ Push sur GitHub
+
+```bash
+# Initialiser Git
+git init
+git add .
+git commit -m "Initial commit - Hoop Board"
+
+# Créer le repo sur GitHub (via interface web)
+# Puis :
+git remote add origin https://github.com/[TON_USERNAME]/hoopboard.git
+git branch -M main
+git push -u origin main
+```
+
+### 3️⃣ Créer Supabase
+
+1. [supabase.com](https://supabase.com) → New Project
+2. Nom : `hoopboard-prod`
+3. SQL Editor → Copier/coller `supabase/schema.sql` → Run
+4. Settings → API → Noter :
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+
+### 4️⃣ Déployer sur Vercel
+
+1. [vercel.com](https://vercel.com) → Import Project
+2. Sélectionner ton repo GitHub `hoopboard`
+3. Ajouter les variables d'environnement :
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGci...
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGci...
+NEXT_PUBLIC_APP_URL=https://hoopboard.vercel.app
+```
+
+4. Deploy → Attendre 2 minutes → ✅ Site en ligne !
+
+### 5️⃣ Mettre à jour l'URL
+
+1. Copier l'URL Vercel (ex: `https://hoopboard-abc123.vercel.app`)
+2. Settings → Environment Variables
+3. Modifier `NEXT_PUBLIC_APP_URL` avec la vraie URL
+4. Redeploy
+
+---
+
+## ✅ C'est prêt !
+
+Visiter ton URL Vercel → Tu dois voir :
+- Landing page orange/blanc
+- Navigation fonctionnelle
+- Toutes les pages chargent
+
+## 📝 Pour modifier après
+
+1. Clone ton repo en local :
+```bash
+git clone https://github.com/[TON_USERNAME]/hoopboard.git
+cd hoopboard
+npm install
+```
+
+2. Modifier le code
+3. Tester : `npm run dev`
+4. Push :
+```bash
+git add .
+git commit -m "Description"
+git push
+```
+
+Vercel redéploie automatiquement en 2min ! 🎉
+
+---
+
+## 🐛 Si problème
+
+**Build échoue** :
+```bash
+npm run build
+# → Lit l'erreur et corrige
+```
+
+**Erreur Supabase** :
+- Vérifier que `schema.sql` a bien été exécuté
+- Vérifier les clés API dans Vercel
+
+**Voir les logs** :
+- Vercel → Ton projet → Deployments → Function Logs
+
+---
+
+## 📂 Structure créée
+
+```
+basketball-saas/
+├── app/
+│   ├── page.tsx                    # Landing
+│   ├── dashboard/president/        # Dashboard président
+│   ├── dashboard/equipe/[id]/      # Détail équipe
+│   ├── coach/[qr_token]/           # Table de marque
+│   └── joueur/[qr_token]/          # Profil joueur
+├── lib/                            # Utilitaires
+├── types/                          # Types TypeScript
+├── supabase/schema.sql             # Base de données
+├── README.md                       # Doc complète
+└── DEPLOYMENT.md                   # Guide détaillé
+```
+
+---
+
+**Pricing** : 49€/mois par club 🏀
